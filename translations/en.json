@@ -1,0 +1,7 @@
+{
+  "app": {
+    "name": "RecastPay Lookup V1",
+    "short_description": "Looks up Stripe customers using the Zendesk requester email.",
+    "long_description": "Displays matching Stripe customer records in the Zendesk ticket sidebar."
+  }
+}

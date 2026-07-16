@@ -1,0 +1,29 @@
+{
+  "name": "RecastPay Lookup V1",
+  "author": {
+    "name": "Recast",
+    "email": "support@recast.tv"
+  },
+  "defaultLocale": "en",
+  "private": true,
+  "version": "1.2.1",
+  "frameworkVersion": "2.0",
+  "location": {
+    "support": {
+      "ticket_sidebar": {
+        "url": "assets/iframe.html",
+        "flexible": true
+      }
+    }
+  },
+  "parameters": [
+    {
+      "name": "stripeSecretKey",
+      "type": "text",
+      "secure": true,
+      "required": true,
+      "scopes": ["header"]
+    }
+  ],
+  "domainWhitelist": ["api.stripe.com"]
+}

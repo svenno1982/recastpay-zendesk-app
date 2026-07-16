@@ -1,0 +1,6 @@
+temp
+temp.*
+*.zip
+.env
+node_modules/
+dist/

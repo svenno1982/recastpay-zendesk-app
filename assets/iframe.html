@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>RecastPay Lookup V1</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <main class="app">
+      <section class="card">
+        <div class="card-heading">
+          <div>
+            <p class="eyebrow">Requester</p>
+            <h1>Ticket Requester</h1>
+          </div>
+
+          <span class="status-badge status-success">Zendesk</span>
+        </div>
+
+        <div class="field">
+          <span class="field-label">Email address</span>
+          <span id="requester-email" class="field-value">
+            Loading requester…
+          </span>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-heading">
+          <div>
+            <p class="eyebrow">Payment provider</p>
+            <h2>Stripe</h2>
+          </div>
+
+          <span id="stripe-status" class="status-badge status-waiting">
+            Waiting
+          </span>
+        </div>
+
+        <div id="stripe-loading" class="lookup-state">
+          <span class="spinner" aria-hidden="true"></span>
+
+          <p id="stripe-message" class="empty-state">Ready to search Stripe.</p>
+        </div>
+
+        <div id="stripe-results" hidden></div>
+      </section>
+
+      <footer class="app-footer">
+        <span>RecastPay Lookup</span>
+
+        <div class="footer-actions">
+          <span class="version">V.1b</span>
+
+          <button id="refresh-button" type="button">Refresh</button>
+        </div>
+      </footer>
+    </main>
+
+    <script src="https://static.zdassets.com/zendesk_app_framework_sdk/2.0/zaf_sdk.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
