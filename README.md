@@ -1,3 +1,8 @@
+![Version](https://img.shields.io/badge/version-v1.2.1-blue)
+![Status](https://img.shields.io/badge/status-Active%20Development-brightgreen)
+![Zendesk](https://img.shields.io/badge/Zendesk-Enterprise-03363D)
+![Stripe](https://img.shields.io/badge/Stripe-Integrated-635BFF)
+
 # RecastPay Zendesk App
 
 **Version:** v1.2.1  
