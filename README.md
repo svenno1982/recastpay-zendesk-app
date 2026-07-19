@@ -1,11 +1,14 @@
 # RecastPay Zendesk App
 
-![Status](https://img.shields.io/badge/status-prototype-orange)
-![Version](https://img.shields.io/badge/version-v1.2.x-blue)
-![Platform](https://img.shields.io/badge/Zendesk-Private%20App-green)
-![License](https://img.shields.io/badge/license-Internal-red)# RecastPay Zendesk App
+**Version:** v1.2.1  
+**Status:** Active Development  
+**Platform:** Zendesk Suite Enterprise (Private App)
 
-An internal Zendesk sidebar application designed to streamline Recast Support workflows by surfacing customer, account and payment information directly within Zendesk tickets.
+---
+
+## Purpose
+
+RecastPay Zendesk App is an internal support tool that provides contextual customer, payment and account information directly within Zendesk tickets.
 
 ---
 
