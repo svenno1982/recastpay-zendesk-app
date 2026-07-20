@@ -15,6 +15,7 @@ const client = ZAFClient.init();
  */
 const FIELD_IDS = {
   lookupStatus: 28495128934940,
+  stripeLink: 28494243804572,
 };
 
 const LOOKUP_STATUS_VALUES = {
@@ -242,6 +243,10 @@ async function setLookupStatus(status) {
   await setCustomField(FIELD_IDS.lookupStatus, status);
 }
 
+async function setStripeLink(url) {
+  await setCustomField(FIELD_IDS.stripeLink, url);
+}
+
 /**
  * Determine whether the existing ticket value should prevent another
  * automatic Stripe request.
@@ -335,6 +340,7 @@ function renderStripeCustomers(customers) {
  * Render the Dashboard-search fallback.
  */
 function renderStripeSearchFallback(email) {
+  stripeMessageElement.textContent = "";
   setStripeLoading(false);
   stripeLoadingElement.hidden = true;
   stripeResultsElement.replaceChildren();
@@ -374,6 +380,7 @@ function renderStripeSearchFallback(email) {
  * access to the broad Stripe Dashboard search.
  */
 function renderStoredLookupStatus(email, lookupStatus) {
+  stripeMessageElement.textContent = "";
   setStripeLoading(false);
   stripeLoadingElement.hidden = true;
   stripeResultsElement.replaceChildren();
@@ -461,10 +468,14 @@ async function performStripeLookup(email) {
     return;
   }
 
-  if (customers.length === 1) {
-    await setLookupStatus(LOOKUP_STATUS_VALUES.found);
-    setStripeStatus("Found", "status-success");
-  } else {
+ if (customers.length === 1) {
+  const stripeUrl = createStripeCustomerUrl(customers[0]);
+
+  await setLookupStatus(LOOKUP_STATUS_VALUES.found);
+  await setStripeLink(stripeUrl);
+
+  setStripeStatus("Found", "status-success");
+} else {
     await setLookupStatus(LOOKUP_STATUS_VALUES.multipleMatches);
 
     setStripeStatus(
