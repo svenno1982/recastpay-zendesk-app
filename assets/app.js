@@ -18,10 +18,10 @@ const FIELD_IDS = {
 };
 
 const LOOKUP_STATUS_VALUES = {
-  found: "found",
-  notFound: "not_found",
-  multipleMatches: "multiple_matches",
-  error: "error",
+  found: "lookup_complete",
+  notFound: "manual_lookup_required",
+  multipleMatches: "manual_lookup_required",
+  error: "lookup_failed",
 };
 
 /**
@@ -215,6 +215,14 @@ async function setCustomField(fieldId, value) {
   const fieldPath = getCustomFieldPath(fieldId);
 
   await client.set(fieldPath, value);
+
+  const check = await client.get(fieldPath);
+
+  console.log("Lookup Status field:", {
+    fieldPath,
+    sent: value,
+    received: check[fieldPath],
+  });
 }
 
 /**
@@ -274,6 +282,7 @@ function renderStripeCustomers(customers) {
   setStripeLoading(false);
   stripeLoadingElement.hidden = true;
   stripeResultsElement.replaceChildren();
+  stripeMessageElement.textContent = "";
 
   customers.forEach((customer, index) => {
     if (index > 0) {
